@@ -8,6 +8,14 @@ for ($i = 0; $i < 512; $i++) {$output .= chr(0);}
 $input = file_get_contents($argv[1]);
 $input = str_replace("\r","",$input);
 $input = explode("\n",$input);
+for( $i = 0; $i < count($input); $i++) {
+	$lines = $input[$i];
+	if ($lines[0] == ";") {
+		unset($input[$i]);
+		$i--;
+	}
+}
+$input = array_values($input);
 for ($i = 0; $i < count($input); $i += 3) {
 	for ($j = 0; $j < 3; $j++) {
 		$color = str_replace("#","",$input[$i+$j]);
