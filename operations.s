@@ -16,20 +16,20 @@ multiply:
     LDA #$80     ;Preload sentinel bit into RESULT
     STA RESULT
     ASL A        ;Initialize RESULT hi byte to 0
-	@L1:
-	LSR NUM2     ;Get low bit of NUM2
+@L1:
+    LSR NUM2     ;Get low bit of NUM2
     BCC @L2       ;0 or 1?
     CLC          ;If 1, add NUM1
     ADC NUM1
-	@L2:
-	ROR A        ;"Stairstep" shift (catching carry from add)
+@L2:
+    ROR A        ;"Stairstep" shift (catching carry from add)
     ROR RESULT
     BCC @L1       ;When sentinel falls off into carry, we're done
     STA RESULT+1
 	
-	ldx RESULT
-	ldy RESULT+1
-	rts
+   ldx RESULT
+   ldy RESULT+1
+   rts
 	
 toHexChars:
 	tax
