@@ -2,14 +2,16 @@
 .DEFINE NUM1 $12
 .DEFINE NUM2 $13
 ; stolen ;
+; store into num1 and num2 ;
+; the numbers to multiply ;
 multiply:
 	 
-	lda #$00
-	sta $10
-	sta $11
+    lda #$00
+    sta $10
+    sta $11
 
-	stx NUM1
-	sty NUM2
+    stx NUM1
+    sty NUM2
 	
     LDA #$80     ;Preload sentinel bit into RESULT
     STA RESULT
